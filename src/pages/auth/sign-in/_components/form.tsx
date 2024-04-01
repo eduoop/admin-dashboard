@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
@@ -38,6 +38,7 @@ interface FormProps {
 const SigningForm = ({ defaultValues }: FormProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,6 +47,7 @@ const SigningForm = ({ defaultValues }: FormProps) => {
 
   const handleSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
+    navigate("/summary");
   };
 
   return (

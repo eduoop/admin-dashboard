@@ -1,16 +1,15 @@
 import type { ReactElement } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { Create } from "./create";
-
-import { Content } from ".";
+import {Summary} from "./index";
 
 export function Router(): ReactElement {
   return (
     <Routes>
-      <Route index element={<Content />} />
-
-      <Route path="/create" element={<Create />} />
+    <Route
+				index
+				element={<Summary />}
+			/>
     </Routes>
   );
 }
