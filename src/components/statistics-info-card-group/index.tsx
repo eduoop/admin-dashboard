@@ -9,7 +9,7 @@ const StatisticsInfoCardGroup = ({
   statisticsInfos,
 }: StatisticsInfoCardGroupProps) => {
   return (
-    <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-3 gap-10 w-full">
+    <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-3 gap-10 w-full mb-10">
       {statisticsInfos.map((statisticsInfo) => (
         <StaticInfoCard
           key={statisticsInfo.label}
