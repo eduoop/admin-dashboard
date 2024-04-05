@@ -1,5 +1,6 @@
 import StaticInfoCardGroup from "@/components/statistics-info-card-group";
 import TotalUsersChart from "./_components/total-users-chart";
+import RecentUsersTable from "./_components/recent-users-table";
 
 const statisticsInfos = [
   {
@@ -23,7 +24,10 @@ export function Summary() {
   return (
     <>
       <StaticInfoCardGroup statisticsInfos={statisticsInfos} />
-      <TotalUsersChart />
+      <div className="mb-10">
+        <TotalUsersChart />
+      </div>
+      <RecentUsersTable />
     </>
   );
 }

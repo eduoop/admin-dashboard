@@ -46,7 +46,7 @@ const TotalUsersChart = () => {
 
   return (
     <ContentCard>
-      <CardHeader className="flex laptop:flex-row items-center gap-5 laptop:gap-10 mb-3 laptop:mb-0">
+      <CardHeader className="flex laptop:flex-row laptop:items-center gap-5 laptop:gap-10 mb-3 laptop:mb-0">
         <CardTitle className="font-inter text-2xl font-semibold text-zinc-900">
           Total de usuários
         </CardTitle>
