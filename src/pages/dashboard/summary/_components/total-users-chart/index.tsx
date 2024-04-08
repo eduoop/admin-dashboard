@@ -1,7 +1,26 @@
 import ContentCard from "@/components/content-card";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
-import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import React from "react";
+import {
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+
+interface CustomTooltipData {
+  name: string;
+  value: number;
+  unit: string;
+}
+
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: CustomTooltipData[];
+}
 
 const data = [
   {
@@ -40,6 +59,37 @@ const data = [
     pv: 4300,
   },
 ];
+
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
+  if (!active || !payload) {
+    return null;
+  }
+
+  // const formattedValue = payload[0].value > 1000 ? formatNumber(payload[0].value) : payload[0].value;
+
+  const formattedValue = (value: number) => {
+    if (value > 1000) {
+      return formatNumber(value);
+    } else {
+      return value;
+    }
+  };
+
+  return (
+    <div className="custom-tooltip">
+      <h2 className="font-inter font-[400] text-4xl">{`${formattedValue(
+        payload[0].value
+      )}`}</h2>
+      <h2 className="font-inter font-[400] text-4xl text-[#f67e7e]">{`${formattedValue(
+        payload[1].value
+      )}`}</h2>
+    </div>
+  );
+};
+
+const formatNumber = (value: number) => {
+  return value.toLocaleString("en-US", { minimumFractionDigits: 0 });
+};
 
 const TotalUsersChart = () => {
   const width = useWindowWidth();
@@ -84,7 +134,7 @@ const TotalUsersChart = () => {
               }}
             >
               <YAxis
-              padding={{ bottom: 45 }}
+                padding={{ bottom: 45 }}
                 axisLine={false}
                 tickLine={false}
                 tickCount={4}
@@ -108,6 +158,8 @@ const TotalUsersChart = () => {
                   fontFamily: "Inter",
                 }}
               />
+              {/* <Tooltip contentStyle={{ backgroundColor: "transparent", border: "none" }}/> */}
+              <Tooltip content={<CustomTooltip />} />
               <Line type="monotone" dataKey="pv" stroke="#1C1C1C" dot={false} />
               <Line
                 type="monotone"
