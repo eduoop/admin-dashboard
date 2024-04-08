@@ -16,7 +16,7 @@ const RecentUsersTable = () => {
       </CardHeader>
 
       <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden">
-        <CardContent className="w-[650px] tablet:w-full ">
+        <CardContent className="w-[1000px] tablet:w-full ">
           <div className="grid grid-cols-7 grid-rows-1 gap-4 w-full bg-gray-100 py-3 px-4 rounded-md border-gray-200 border-solid border mb-4">
             <div className="flex items-center">
               <div className="flex items-center space-x-2">
