@@ -1,5 +1,6 @@
 import StatisticsInfoCardGroup from "@/components/statistics-info-card-group";
 import React from "react";
+import RecentPlayers from "./_components/recent-players";
 
 const statisticsInfos = [
   {
@@ -23,6 +24,7 @@ export function Users() {
   return (
     <>
       <StatisticsInfoCardGroup statisticsInfos={statisticsInfos} />
+      <RecentPlayers />
     </>
   );
 }

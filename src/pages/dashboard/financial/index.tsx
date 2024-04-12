@@ -1,4 +1,6 @@
-import StatisticsInfoCardGroup from '@/components/statistics-info-card-group';
+import StatisticsInfoCardGroup from "@/components/statistics-info-card-group";
+import Transitions from "./_components/transactions";
+import LeagueHistory from "./_components/league-history";
 
 const statisticsInfos = [
   {
@@ -18,8 +20,14 @@ const statisticsInfos = [
   },
 ];
 
-export function Financial () {
+export function Financial() {
   return (
-    <StatisticsInfoCardGroup statisticsInfos={statisticsInfos} />
-  )
+    <>
+      <StatisticsInfoCardGroup statisticsInfos={statisticsInfos} />
+      <div className="mb-10">
+        <Transitions />
+      </div>
+      <LeagueHistory />
+    </>
+  );
 }

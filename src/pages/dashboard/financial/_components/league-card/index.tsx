@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { Checkbox } from "../ui/checkbox";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Button } from "../ui/button";
+import React from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { BsEye } from "react-icons/bs";
 import { MdBlockFlipped } from "react-icons/md";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
-import UserInfosDrawer from "../user-infos-drawer";
+import { useState } from "react";
+import LeagueInfosDrawer from "../league-infos-drawer.tsx";
 
-const UserCard = () => {
+const LeagueCard = () => {
   const [checkedUser, setCheckedUser] = useState(false);
 
   return (
-    <div className="grid grid-cols-7 grid-rows-1 gap-4 w-full border-gray-200 border-solid border py-3 px-4 rounded-md items-center">
+    <div className="grid grid-cols-6 grid-rows-1 gap-4 w-full border-gray-200 border-solid border py-3 px-4 rounded-md items-center">
       <div className="flex items-center">
         <div className="flex items-center space-x-3">
           <Checkbox
@@ -27,7 +28,7 @@ const UserCard = () => {
 
           <Avatar className="w-10 h-10">
             <AvatarImage
-              src="https://i.pinimg.com/280x280_RS/3a/66/f8/3a66f807ecd9a390077624a2fcf002ea.jpg"
+              src="https://static.vecteezy.com/ti/vetor-gratis/p3/18932192-avatar-de-um-personagem-de-jogadores-de-futebol-gratis-vetor.jpg"
               alt="avatar"
             />
             <AvatarFallback>A</AvatarFallback>
@@ -35,19 +36,17 @@ const UserCard = () => {
         </div>
       </div>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-      Eduardo
+        Liga da Amizade
       </h2>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
         @nickname
       </h2>
-      <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[12px]">
-        email@email.com
+
+      <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
+        R$ 300,00
       </h2>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-        15/01/2024
-      </h2>
-      <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-        Gratuita
+        18/09/2016
       </h2>
       <Sheet>
         <div className="flex items-center">
@@ -70,10 +69,10 @@ const UserCard = () => {
           </Button>
         </div>
 
-        <UserInfosDrawer />
+        <LeagueInfosDrawer />
       </Sheet>
     </div>
   );
 };
 
-export default UserCard;
+export default LeagueCard;

@@ -37,7 +37,7 @@ const UserInfosDrawer = () => {
 
             <div className="flex flex-col items-center">
               <SheetTitle className="text-zinc-900 font-bold">
-                Juninho Pernanbucano
+              Eduardo Meneses
               </SheetTitle>
 
               <span className="text-gray-600 mb-2">@jpreis</span>

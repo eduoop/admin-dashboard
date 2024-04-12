@@ -11,7 +11,7 @@ const LoggedUser = () => {
         <AvatarFallback>V</AvatarFallback>
       </Avatar>
 
-      <p className="font-[400] text-black text-[16px] overflow-hidden text-ellipsis text-nowrap">Juninho</p>
+      <p className="font-[400] text-black text-[16px] overflow-hidden text-ellipsis text-nowrap">Eduardo</p>
     </div>
   );
 };

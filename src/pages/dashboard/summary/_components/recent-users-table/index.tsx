@@ -9,14 +9,14 @@ const RecentUsersTable = () => {
 
   return (
     <ContentCard>
-      <CardHeader>
+      <CardHeader className="px-0 tablet:px-6">
         <CardTitle className="font-inter text-2xl font-semibold text-zinc-900">
           Usuários Recentes
         </CardTitle>
       </CardHeader>
 
       <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden">
-        <CardContent className="w-[1000px] tablet:w-full ">
+        <CardContent className="w-[1000px] tablet:w-full px-0 tablet:px-6">
           <div className="grid grid-cols-7 grid-rows-1 gap-4 w-full bg-gray-100 py-3 px-4 rounded-md border-gray-200 border-solid border mb-4">
             <div className="flex items-center">
               <div className="flex items-center space-x-2">
@@ -59,6 +59,11 @@ const RecentUsersTable = () => {
           </div>
 
           <div className="flex flex-col w-full gap-4">
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
+            <UserCard />
             <UserCard />
             <UserCard />
           </div>

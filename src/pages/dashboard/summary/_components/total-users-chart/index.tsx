@@ -96,7 +96,7 @@ const TotalUsersChart = () => {
 
   return (
     <ContentCard>
-      <CardHeader className="flex laptop:flex-row laptop:items-center gap-5 laptop:gap-10 mb-3 laptop:mb-0">
+      <CardHeader className="flex laptop:flex-row laptop:items-center gap-5 laptop:gap-10 mb-3 laptop:mb-0 px-0 tablet:px-6">
         <CardTitle className="font-inter text-2xl font-semibold text-zinc-900">
           Total de usuários
         </CardTitle>
@@ -119,7 +119,7 @@ const TotalUsersChart = () => {
         </div>
       </CardHeader>
 
-      <CardContent className="pb-0 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+      <CardContent className="pb-0 overflow-x-auto [&::-webkit-scrollbar]:hidden px-0 tablet:px-6">
         <div className="w-[650px] tablet:w-full">
           <ResponsiveContainer width={"100%"} height={350}>
             <LineChart
