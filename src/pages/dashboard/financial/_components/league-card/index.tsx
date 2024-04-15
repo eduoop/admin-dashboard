@@ -7,6 +7,11 @@ import { MdBlockFlipped } from "react-icons/md";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
 import LeagueInfosDrawer from "../league-infos-drawer.tsx";
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog.tsx";
+import BlockLeaguePopup from "@/components/block-league-popup/index.tsx";
 
 const LeagueCard = () => {
   const [checkedUser, setCheckedUser] = useState(false);
@@ -60,13 +65,18 @@ const LeagueCard = () => {
             </Button>
           </SheetTrigger>
 
-          <Button
-            className="bg-transparent hover:bg-transparent"
-            variant="secondary"
-            size="icon"
-          >
-            <MdBlockFlipped className="text-red-600" size={25} />
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                className="bg-transparent hover:bg-transparent"
+                variant="secondary"
+                size="icon"
+              >
+                <MdBlockFlipped className="text-red-600" size={25} />
+              </Button>
+            </AlertDialogTrigger>
+            <BlockLeaguePopup/>
+          </AlertDialog>
         </div>
 
         <LeagueInfosDrawer />
