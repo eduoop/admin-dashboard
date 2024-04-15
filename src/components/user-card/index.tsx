@@ -6,6 +6,8 @@ import { BsEye } from "react-icons/bs";
 import { MdBlockFlipped } from "react-icons/md";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import UserInfosDrawer from "../user-infos-drawer";
+import { AlertDialog, AlertDialogTrigger } from "../ui/alert-dialog";
+import DeleteUserPopup from "../delete-user-popup";
 
 const UserCard = () => {
   const [checkedUser, setCheckedUser] = useState(false);
@@ -35,7 +37,7 @@ const UserCard = () => {
         </div>
       </div>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-      Eduardo
+        Eduardo
       </h2>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
         @nickname
@@ -61,13 +63,18 @@ const UserCard = () => {
             </Button>
           </SheetTrigger>
 
-          <Button
-            className="bg-transparent hover:bg-transparent"
-            variant="secondary"
-            size="icon"
-          >
-            <MdBlockFlipped className="text-red-600" size={25} />
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                className="bg-transparent hover:bg-transparent"
+                variant="secondary"
+                size="icon"
+              >
+                <MdBlockFlipped className="text-red-600" size={25} />
+              </Button>
+            </AlertDialogTrigger>
+            <DeleteUserPopup />
+          </AlertDialog>
         </div>
 
         <UserInfosDrawer />
