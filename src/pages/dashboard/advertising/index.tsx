@@ -1,4 +1,5 @@
 import StatisticsInfoCardGroup from "@/components/statistics-info-card-group";
+import BannersContainer from "./_components/BannersContainer";
 
 const statisticsInfos = [
   {
@@ -19,7 +20,14 @@ const statisticsInfos = [
 ];
 
 export function Advertising() {
-  return <StatisticsInfoCardGroup statisticsInfos={statisticsInfos} />;
+  return (
+    <>
+      <StatisticsInfoCardGroup statisticsInfos={statisticsInfos} />;
+      <div className="mb-10">
+        <BannersContainer />
+      </div>
+    </>
+  );
 }
 
 export default Advertising;
