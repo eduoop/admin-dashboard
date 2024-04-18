@@ -13,6 +13,11 @@ import { CalendarIcon } from "lucide-react";
 import { useState } from "react";
 import { ImSearch } from "react-icons/im";
 import BannerCard from "../BannerCard";
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog.tsx";
+import AddBannerPopup from "../add-banner-popup";
 
 const BannersContainer = () => {
   const [date, setDate] = useState<Date | undefined>();
@@ -72,12 +77,17 @@ const BannersContainer = () => {
             </div>
           </div>
 
-          <Button
-            variant={"default"}
-            className="font-semibold text-[15px] h-12"
-          >
-            Adicionar Banner
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                variant={"default"}
+                className="font-semibold text-[15px] h-12"
+              >
+                Adicionar Banner
+              </Button>
+            </AlertDialogTrigger>
+            <AddBannerPopup />
+          </AlertDialog>
         </div>
       </CardHeader>
       <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden">
