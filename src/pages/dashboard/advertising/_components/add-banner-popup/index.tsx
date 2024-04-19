@@ -50,10 +50,10 @@ const AddBannerPopup = () => {
   };
 
   return (
-    <AlertDialogContent className="px-8 rounded-2xl max-w-[800px] bg-white block">
+    <AlertDialogContent className="px-8 rounded-2xl max-w-[800px] bg-white block overflow-scroll">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
-          <div className="flex gap-8 w-full h-full">
+          <div className="flex flex-col md:flex-row gap-8 w-full h-full">
             <UploadBannerImage
               onChange={handleImageChange}
               image={imageBase64}

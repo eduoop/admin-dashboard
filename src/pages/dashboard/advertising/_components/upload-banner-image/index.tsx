@@ -18,10 +18,9 @@ export const UploadBannerImage = forwardRef<HTMLInputElement, Props>(
             display: "flex",
             flexDirection: "row",
             gap: ".75rem",
-            width: "300px",
-            height: "330px",
             alignItems: "center",
           }}
+          className="w-[100px] h-[100px] tablet:w-[300px] tablet:h-[330px]"
         >
           <div
             style={{
