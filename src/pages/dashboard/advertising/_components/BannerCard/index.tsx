@@ -1,7 +1,8 @@
+import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import React from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import { LuTrash2 } from "react-icons/lu";
+import DeleteBannerPopup from "../delete-banner-popup";
 
 const BannerCard = () => {
   return (
@@ -27,9 +28,19 @@ const BannerCard = () => {
         <Button variant="outline" size={"icon"} className="rounded-full">
           <IoEyeOutline size={23} />
         </Button>
-        <Button variant="destructive" size={"icon"} className="rounded-full">
-          <LuTrash2 size={23} />
-        </Button>
+
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button
+              variant="destructive"
+              size={"icon"}
+              className="rounded-full"
+            >
+              <LuTrash2 size={23} />
+            </Button>
+          </AlertDialogTrigger>
+          <DeleteBannerPopup />
+        </AlertDialog>
       </div>
     </div>
   );

@@ -18,8 +18,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+interface AddBannerPopupProps {
+  setOpen: (open: boolean) => void;
+}
 
-const AddBannerPopup = () => {
+const AddBannerPopup = ({ setOpen }: AddBannerPopupProps) => {
   const [imageBase64, setImageBase64] = useState<string>("");
 
   const form = useForm<CreateBannerForm>({
@@ -47,17 +50,32 @@ const AddBannerPopup = () => {
     formData: z.infer<typeof CreateBannerSchemaForm>
   ) => {
     console.log(formData);
+    
+    form.reset();
+    form.setValue("name", ""); // Limpar o campo "name"
+    form.setValue("comments", ""); // Limpar o campo "comments"
+
+    setImageBase64("");
+    setOpen(false);
   };
 
   return (
-    <AlertDialogContent className="px-8 rounded-2xl max-w-[800px] bg-white block overflow-scroll">
+    <AlertDialogContent className="px-8 rounded-2xl max-w-[800px] bg-white block">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <div className="flex flex-col md:flex-row gap-8 w-full h-full">
-            <UploadBannerImage
-              onChange={handleImageChange}
-              image={imageBase64}
-            />
+            <div className="flex flex-col gap-2">
+              <UploadBannerImage
+                onChange={handleImageChange}
+                image={imageBase64}
+              />
+
+              {form.formState.errors.image && (
+                <p className="text-sm font-medium text-destructive">
+                  {form.formState.errors.image.message}
+                </p>
+              )}
+            </div>
 
             <div className="w-full flex flex-col gap-5">
               <FormField
@@ -75,7 +93,7 @@ const AddBannerPopup = () => {
                       <Input
                         className="bg-[#F9F9F9] text-zinc-900 border-none w-full"
                         id="name"
-                        placeholder="Nome da musica"
+                        placeholder="Nome do banner"
                         {...field}
                       />
                     </FormControl>
@@ -99,7 +117,7 @@ const AddBannerPopup = () => {
                       <Textarea
                         className="bg-[#F9F9F9] text-zinc-900 border-none w-full min-h-[100px] h-full"
                         id="comments"
-                        placeholder="Nome da musica"
+                        placeholder="Comentário do banner"
                         {...field}
                       />
                     </FormControl>

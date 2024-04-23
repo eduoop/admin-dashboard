@@ -21,6 +21,7 @@ import AddBannerPopup from "../add-banner-popup";
 
 const BannersContainer = () => {
   const [date, setDate] = useState<Date | undefined>();
+  const [openAddBanner, setOpenAddBanner] = useState(false);
 
   return (
     <ContentCard>
@@ -77,7 +78,7 @@ const BannersContainer = () => {
             </div>
           </div>
 
-          <AlertDialog>
+          <AlertDialog open={openAddBanner} onOpenChange={setOpenAddBanner}>
             <AlertDialogTrigger asChild>
               <Button
                 variant={"default"}
@@ -86,7 +87,7 @@ const BannersContainer = () => {
                 Adicionar Banner
               </Button>
             </AlertDialogTrigger>
-            <AddBannerPopup />
+            <AddBannerPopup setOpen={setOpenAddBanner} />
           </AlertDialog>
         </div>
       </CardHeader>

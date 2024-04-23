@@ -67,21 +67,7 @@ export const UploadBannerImage = forwardRef<HTMLInputElement, Props>(
                   </p>
                 </div>
               )}
-
-              {/* <p
-                style={{
-                  color: "blue",
-                  wordBreak: "break-all",
-                  overflow: "hidden",
-                  maxWidth: "90%",
-                  alignSelf: "center",
-                  maxHeight: "52px",
-                }}
-              >
-                {filename ||
-                  inputRef.current?.value.split("\\").pop() ||
-                  "Enviar imagem"}
-              </p> */}
+             
             </div>
           </div>
 
