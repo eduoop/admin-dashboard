@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, ChangeEvent, HTMLProps } from "react";
+import { forwardRef, useRef, ChangeEvent, HTMLProps } from "react";
 import { MdCloudUpload } from "react-icons/md";
 
 type Props = {

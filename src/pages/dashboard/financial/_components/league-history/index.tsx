@@ -1,4 +1,3 @@
-import React from "react";
 import ContentCard from "@/components/content-card";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
