@@ -75,7 +75,7 @@ export const UploadBannerImage = forwardRef<HTMLInputElement, Props>(
             ref={inputRef}
             style={{ display: "none" }}
             type="file"
-            accept="image/png, image/jpeg"
+            accept="image/png, image/jpeg, image/gif"
             onChange={onChange}
             {...rest}
           />
