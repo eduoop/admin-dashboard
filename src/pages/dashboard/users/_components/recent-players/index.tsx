@@ -16,10 +16,46 @@ import { PiExportBold } from "react-icons/pi";
 import { Checkbox } from "@/components/ui/checkbox";
 import Pagination from "@/components/Pagination";
 import UserCard from "@/components/user-card";
+import { User } from "@/models/user.model";
 
 const RecentPlayers = () => {
   const [date, setDate] = useState<Date | undefined>();
   const [checkedAllUsers, setCheckedAllUsers] = useState(false);
+
+  const users: User[] = Array.from({ length: 10 }, (_, index) => ({
+    name: `User ${index + 1}`,
+    username: `@user${index + 1}`,
+    bolaPercentage: Math.random(),
+    accountType: index % 2 === 0 ? "Gratuita" : "Premium",
+    creationDate: `${Math.floor(Math.random() * 30) + 1}/04/2024`,
+    favoriteTeams: ["Team A", "Team B", "Team C"],
+    leagues: ["League X", "League Y", "League Z"],
+    championships: ["Championship 1", "Championship 2"],
+    totalDeposited: Math.floor(Math.random() * 5000) + 100,
+    email: `user${index + 1}@example.com`,
+    location: "Random City",
+    avatar: `https://randomuser.me/api/portraits/${
+      index % 2 === 0 ? "men" : "women"
+    }/${index + 1}.jpg`,
+  }));
+
+  function downloadUsersAsXLSX(users: User[]) {
+    // Cria o conteúdo do arquivo XLSX
+    // const header = Object.keys(users[0]).join("\t") + "\n";
+    const rows = users.map(user => Object.values(user).join("\t")).join("\n");
+    const xlsxContent = rows;
+
+    // Cria um Blob com o conteúdo
+    const blob = new Blob([xlsxContent], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = URL.createObjectURL(blob);
+
+    // Cria um link e simula o clique para fazer o download
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'users.xlsx');
+    document.body.appendChild(link);
+    link.click();
+}
 
   return (
     <ContentCard>
@@ -79,6 +115,7 @@ const RecentPlayers = () => {
           <Button
             variant={"outline"}
             className="gap-2 border-gray-200 font-manrope"
+            onClick={() => downloadUsersAsXLSX(users)}
           >
             <PiExportBold size={20} />
             Exportar
@@ -116,13 +153,13 @@ const RecentPlayers = () => {
               Nickname
             </h2>
             <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-              Status
+              Email
             </h2>
             <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-              Valor
+            Data
             </h2>
             <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-              Data
+              Conta
             </h2>
             <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
               Ação
@@ -130,13 +167,9 @@ const RecentPlayers = () => {
           </div>
 
           <div className="flex flex-col w-full gap-4 mb-4">
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
+            {users.map((user, i) => (
+              <UserCard key={i} user={user} />
+            ))}
           </div>
 
           <Pagination />

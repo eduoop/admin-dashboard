@@ -8,8 +8,13 @@ import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import UserInfosDrawer from "../user-infos-drawer";
 import { AlertDialog, AlertDialogTrigger } from "../ui/alert-dialog";
 import DeleteUserPopup from "../delete-user-popup";
+import { User } from "@/models/user.model";
 
-const UserCard = () => {
+interface UserCardProps {
+  user?: User;
+}
+
+const UserCard = ({ user }: UserCardProps) => {
   const [checkedUser, setCheckedUser] = useState(false);
 
   return (
@@ -29,27 +34,27 @@ const UserCard = () => {
 
           <Avatar className="w-10 h-10">
             <AvatarImage
-              src="https://i.pinimg.com/280x280_RS/3a/66/f8/3a66f807ecd9a390077624a2fcf002ea.jpg"
+              src={user ? user.avatar : "https://i.pinimg.com/280x280_RS/3a/66/f8/3a66f807ecd9a390077624a2fcf002ea.jpg"}
               alt="avatar"
             />
-            <AvatarFallback>A</AvatarFallback>
+            <AvatarFallback>{user ? user.name.split("")[0] : "E"}</AvatarFallback>
           </Avatar>
         </div>
       </div>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-        Eduardo
+        {user ? user.name : "Eduardo"}
       </h2>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-        @nickname
+        {user ? user.username : "Eduop"}
       </h2>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[12px]">
-        email@email.com
+        {user ? user.email : "eduardo@gmail.com"}
       </h2>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-        15/01/2024
+        {user ? user.creationDate : "01/01/2020"}
       </h2>
       <h2 className="font-inter font-semibold overflow-hidden text-ellipsis text-nowrap text-[15px]">
-        Gratuita
+        {user ? user.accountType : "Premium"}
       </h2>
       <Sheet>
         <div className="flex items-center">
@@ -77,7 +82,7 @@ const UserCard = () => {
           </AlertDialog>
         </div>
 
-        <UserInfosDrawer />
+        <UserInfosDrawer user={user}/>
       </Sheet>
     </div>
   );

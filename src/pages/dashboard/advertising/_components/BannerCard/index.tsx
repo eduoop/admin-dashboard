@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { IoEyeOutline } from "react-icons/io5";
 import { LuTrash2 } from "react-icons/lu";
 import DeleteBannerPopup from "../delete-banner-popup";
+import BannerInfosPopup from "../banner-infos-popup";
 
 const BannerCard = () => {
   return (
@@ -25,9 +26,14 @@ const BannerCard = () => {
       </div>
 
       <div className="flex items-center gap-3">
-        <Button variant="outline" size={"icon"} className="rounded-full">
-          <IoEyeOutline size={23} />
-        </Button>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="outline" size={"icon"} className="rounded-full">
+              <IoEyeOutline size={23} />
+            </Button>
+          </AlertDialogTrigger>
+          <BannerInfosPopup />
+        </AlertDialog>
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
