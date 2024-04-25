@@ -18,20 +18,23 @@ import {
   BarChart,
   Rectangle,
   ResponsiveContainer,
+  XAxis,
   YAxis,
 } from "recharts";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 const data = [
   {
-    name: "Page A",
-    vizualizações: 36230,
-    cliques: 23267,
+    name: "Vizualizações",
+    value: 36230,
+  },
+  {
+    name: "Cliques",
+    value: 23267,
   },
 ];
 
 const BannerInfosPopup = () => {
-
   const width = useWindowWidth();
   const bannerImage =
     "https://editorial.uefa.com/resources/028b-1a67f9d7cdb4-b36f0920a6d0-1000/uefa_champions_league_final_2023_24_host_city_trophy_shoot.jpeg";
@@ -52,8 +55,13 @@ const BannerInfosPopup = () => {
     console.log(formData);
   };
 
+  const dataWithFill = data.map((item) => ({
+    ...item,
+    fill: item.name === "Vizualizações" ? "#F74948" : "#0D5DBC",
+  }));
+
   return (
-    <AlertDialogContent className="px-8 rounded-2xl max-w-[800px] bg-white block">
+    <AlertDialogContent className="px-8 rounded-2xl max-w-[800px] bg-white block max-h-[80vh] overflow-y-scroll">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <div className="flex flex-col md:flex-row gap-8 w-full h-full">
@@ -116,61 +124,68 @@ const BannerInfosPopup = () => {
           </div>
         </form>
       </Form>
-      <div>
-        <h1 className="text-zinc-900 font-semibold">Desempenho</h1>
-        <ResponsiveContainer width={"100%"} height={200}>
-          <BarChart
-            data={data}
-            height={200}
-            margin={{
-              top: 5,
-              bottom: 5,
-            }}
-          >
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              tickCount={4}
-              tickFormatter={(value) =>
-                value !== 0 && value >= 1000 ? `${value}` : `${value}`
-              }
-              tick={{
-                fontSize: width < 640 ? 15 : 14,
-                fontWeight: "400",
-                fontFamily: "Inter",
+      <div className="w-full flex justify-center">
+        <div className="bg-[#F9F9F9] w-full max-w-[600px] p-6 rounded-lg mt-5">
+          <h1 className="text-zinc-900 font-semibold mb-4">Desempenho</h1>
+          <ResponsiveContainer width={"100%"} height={200}>
+            <BarChart
+              data={dataWithFill}
+              height={200}
+              margin={{
+                top: 5,
+                bottom: 5,
               }}
-            />
-            <Bar
-              radius={[16, 16, 4, 4]}
-              dataKey="vizualizações"
-              fill="#F74948"
-              activeBar={<Rectangle fill="#F74948" stroke="#F74948" />}
-              label={{
-                position: 'bottom',
-    
-                style: {
-                  fontSize: '.875rem',
-                  fill: "#F74948",
-                },
-                offset: 12,
-              }}
-            />
-            <Bar
-              radius={[16, 16, 4, 4]}
-              dataKey="cliques"
-              fill="#0D5DBC"
-              activeBar={<Rectangle fill="#0D5DBC" stroke="#0D5DBC" />}
-              label={{
-                position: 'bottom',
-                style: {
-                  fontSize: '.875rem',
-                  fill: "#F74948",
-                },
-                offset: 0,
-              }}
-            />
-          </BarChart>
-        </ResponsiveContainer>
+            >
+              <XAxis
+                domain={["auto", "auto"]}
+                tickLine={false}
+                tickMargin={8}
+                style={{ fontSize: ".875rem", fill: "#7d7d7d", fontWeight: "600" }}
+                dataKey="name"
+                axisLine={{ stroke: "#cdcdcd", strokeWidth: 1 }} 
+              />
+              <YAxis
+                axisLine={false}
+                tickLine={false}
+                tickCount={4}
+                tickFormatter={(value) =>
+                  value !== 0 && value >= 1000 ? `${value}` : `${value}`
+                }
+                tick={{
+                  fontSize: width < 640 ? 15 : 14,
+                  fontWeight: "400",
+                  fontFamily: "Inter",
+                }}
+              />
+              {/* {data.map((item) =>
+                item.cliques ? (
+                  <Bar
+                    radius={[8, 8, 8, 8]}
+                    barSize={30}
+                    dataKey="cliques"
+                    fill="#0D5DBC"
+                    activeBar={<Rectangle fill="#0D5DBC" stroke="#0D5DBC" />}
+                  />
+                ) : (
+                  <Bar
+                    radius={[8, 8, 8, 8]}
+                    barSize={30}
+                    dataKey="vizualizações"
+                    fill="#F74948"
+                    activeBar={<Rectangle fill="#F74948" stroke="#F74948" />}
+                  />
+                )
+              )} */}
+              <Bar
+                radius={[8, 8, 8, 8]}
+                barSize={30}
+                dataKey="value"
+                fill="#0D5DBC"
+                activeBar={<Rectangle fill="#0D5DBC" stroke="#0D5DBC" />}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </AlertDialogContent>
   );
