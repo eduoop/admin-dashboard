@@ -59,10 +59,10 @@ export const UploadBannerImage = forwardRef<HTMLInputElement, Props>(
               ) : (
                 <div className="flex flex-col gap-1 items-center h-full justify-center">
                   <MdCloudUpload size={30} className="text-red-500" />
-                  <h1 className="font-bold text-zinc-900 text-md">
+                  <h1 className="font-bold text-zinc-900 text-md hidden tablet:block">
                     Faça o upload da iamgem
                   </h1>
-                  <p className="text-zinc-500 text-sm text-center">
+                  <p className="text-zinc-500 text-sm text-center hidden tablet:block">
                     Arraste a imagem desejada para a criação do banner
                   </p>
                 </div>
@@ -75,7 +75,7 @@ export const UploadBannerImage = forwardRef<HTMLInputElement, Props>(
             ref={inputRef}
             style={{ display: "none" }}
             type="file"
-            accept="image/png, image/jpeg, image/gif"
+            accept="image/png, image/jpeg"
             onChange={onChange}
             {...rest}
           />

@@ -4,6 +4,7 @@ import {
   SheetTitle,
   SheetFooter,
   SheetDescription,
+  SheetClose,
 } from "@/components/ui/sheet";
 import LeagueBanner from "../../../../../../public/static/images/general/league-banner.png";
 import { Button } from "@/components/ui/button";
@@ -87,8 +88,17 @@ const LeagueInfosDrawer = () => {
         </div>
 
         <SheetFooter className="text-black grid items-center grid-cols-2 mt-6 gap-2">
-          <Button variant={"outline"}>Voltar</Button>
-          <Button variant={"destructive"}>Banir</Button>
+          <SheetClose asChild>
+            <Button variant={"destructive"}>Banir</Button>
+          </SheetClose>
+          <SheetClose asChild>
+            <Button
+              variant={"outline"}
+              className="text-red-600 border-none hover:bg-red-200/50 hover:text-red-600"
+            >
+              Voltar
+            </Button>
+          </SheetClose>
         </SheetFooter>
       </div>
     </SheetContent>

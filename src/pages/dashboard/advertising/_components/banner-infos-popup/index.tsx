@@ -1,4 +1,4 @@
-import { AlertDialogContent } from "@/components/ui/alert-dialog";
+import { DialogContent } from "@/components/ui/dialog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { CreateBannerForm, CreateBannerSchemaForm } from "./schema";
@@ -61,7 +61,7 @@ const BannerInfosPopup = () => {
   }));
 
   return (
-    <AlertDialogContent className="px-8 rounded-2xl max-w-[800px] bg-white block max-h-[80vh] overflow-y-scroll">
+    <DialogContent className="px-8 rounded-2xl max-w-[800px] bg-white block max-h-[80vh] overflow-y-scroll">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <div className="flex flex-col md:flex-row gap-8 w-full h-full">
@@ -187,7 +187,7 @@ const BannerInfosPopup = () => {
           </ResponsiveContainer>
         </div>
       </div>
-    </AlertDialogContent>
+    </DialogContent>
   );
 };
 

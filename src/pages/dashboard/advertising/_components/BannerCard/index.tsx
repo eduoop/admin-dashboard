@@ -1,4 +1,5 @@
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { IoEyeOutline } from "react-icons/io5";
 import { LuTrash2 } from "react-icons/lu";
@@ -26,14 +27,14 @@ const BannerCard = () => {
       </div>
 
       <div className="flex items-center gap-3">
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
+        <Dialog>
+          <DialogTrigger asChild>
             <Button variant="outline" size={"icon"} className="rounded-full">
               <IoEyeOutline size={23} />
             </Button>
-          </AlertDialogTrigger>
+          </DialogTrigger>
           <BannerInfosPopup />
-        </AlertDialog>
+        </Dialog>
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
